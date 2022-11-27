@@ -7,21 +7,11 @@ public class CubeCollect : MonoBehaviour
 {
     public Transform PlayerModel;
     public Transform PlayerHolder;
+    public Transform LastCube;
     public Transform Cubes;
     public float PlayerY = 0.5f;
     public float CubeY = 1;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public bool isPlayer;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -33,15 +23,30 @@ public class CubeCollect : MonoBehaviour
             other.transform.parent = PlayerHolder;
             Vector3 otherPos = new Vector3(transform.position.x, transform.position.y + CubeY, transform.position.z);
             other.transform.DOMove(otherPos, 0f, false);
-            PlayerY+=1f;
+            PlayerY += 1f;
             CubeY++;
             PlayerModel.DOMoveY(PlayerY, 0f, false);
+            LastCube = other.transform;
         }
+
         if(other.tag == "Obstacle")
         {
+            if (isPlayer)
+            {
+                if(LastCube != null)
+                {
+                    LastCube.GetComponent<CubeCollect>().isPlayer = true;
+                }
+                else
+                {
+                    Debug.LogWarning("!!GAME OVER!!");
+                }
+                int obsPart = other.GetComponent<ObstacleValueHolder>().PartCount;
+                PlayerHolder.DOMoveY(PlayerHolder.position.y - obsPart, 0.1f, false);
+            }
+
             other.GetComponent<BoxCollider>().isTrigger = false;
             transform.parent = Cubes;
-            PlayerHolder.DOMoveY(PlayerHolder.position.y - 1f, 0.1f, false);
         }
     }
 

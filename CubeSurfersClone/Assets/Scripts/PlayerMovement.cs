@@ -13,7 +13,6 @@ public class PlayerMovement : MonoBehaviour
     {
             Player.DOMoveZ(Player.transform.position.z + MovementSpeed, 0.2f, false);
             Move();
-
     }
 
     // Move player left or right depending on the mouse position change.
@@ -22,7 +21,6 @@ public class PlayerMovement : MonoBehaviour
         // Get the first mouse position.
         if (Input.GetMouseButton(0))
         {
-            print(Input.mousePosition.x);
             float mousePos = (Input.mousePosition.x - (Screen.width / 2));
             Player.DOMoveX(Mathf.Clamp(mousePos * HorizontalSpeed, -3f, 3f) , 0.2f, false);
         }
