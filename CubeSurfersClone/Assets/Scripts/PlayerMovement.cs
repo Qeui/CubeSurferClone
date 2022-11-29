@@ -11,7 +11,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-            Player.DOMoveZ(Player.transform.position.z + MovementSpeed, 0.2f, false);
+            Player.DOLocalMoveZ(Player.transform.position.z + MovementSpeed, 0.2f, false);
             Move();
     }
 
@@ -22,7 +22,7 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetMouseButton(0))
         {
             float mousePos = (Input.mousePosition.x - (Screen.width / 2));
-            Player.DOMoveX(Mathf.Clamp(mousePos * HorizontalSpeed, -3f, 3f) , 0.2f, false);
+            Player.DOLocalMoveX(Mathf.Clamp(mousePos * HorizontalSpeed, -3f, 3f) , 0.2f, false);
         }
         
         
