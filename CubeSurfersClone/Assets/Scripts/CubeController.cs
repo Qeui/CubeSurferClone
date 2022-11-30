@@ -48,7 +48,6 @@ public class CubeController : MonoBehaviour
             }
             if (hit.transform.name == "ObstacleCube" && isPlayer)
             {
-                Debug.LogError("GAME OVR");
                 uIMenager.GameOverUI();
             }
         }

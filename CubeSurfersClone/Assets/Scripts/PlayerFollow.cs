@@ -6,15 +6,25 @@ using DG.Tweening;
 public class PlayerFollow : MonoBehaviour
 {
     public Transform Player;
-    public Vector3 Offset;
+    public Vector3 OffsetZ;
+    public Vector3 OffsetX;
+    private Vector3 followPos;
+    public bool playerIsRotated = false;
 
     // Update is called once per frame
     void Update()
     {
-        Vector3 followPos = new Vector3(0, Player.position.y, Player.position.z) + Offset;
+        if (!playerIsRotated)
+        {
+            followPos = new Vector3(0, Player.position.y, Player.position.z) + OffsetZ;
+        }
+        else
+        {
+            followPos = new Vector3(Player.position.x, Player.position.y, 0) + OffsetX;
+        }
+        
 
         transform.DOMove(followPos, 0.2f, false);
-        //transform.DOLookAt(Player.position, 0.5f, AxisConstraint.None, Vector3.up);
 
     }
 }

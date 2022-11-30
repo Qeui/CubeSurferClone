@@ -18,6 +18,7 @@ public class PlayerStackController : MonoBehaviour
         transform.position = new Vector3(transform.position.x, transform.position.y + 1f, transform.position.z);
         _gameObject.transform.position = new Vector3(lastCube.transform.position.x, lastCube.transform.position.y - 1f, lastCube.transform.position.z);
         _gameObject.transform.SetParent(transform);
+        _gameObject.tag = "Player";
         cubeList.Add(_gameObject);
         UpdateLastCube();
     }
