@@ -12,7 +12,7 @@ public class PlayerFollow : MonoBehaviour
     public bool playerIsRotated = false;
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (!playerIsRotated)
         {
@@ -23,7 +23,6 @@ public class PlayerFollow : MonoBehaviour
             followPos = new Vector3(Player.position.x, Player.position.y, 0) + OffsetX;
         }
         
-
         transform.DOMove(followPos, 0.2f, false);
 
     }

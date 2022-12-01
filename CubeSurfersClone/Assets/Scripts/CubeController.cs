@@ -11,14 +11,18 @@ public class CubeController : MonoBehaviour
     private bool isStack = false;
     private Collider cubeCollider;
     private RaycastHit hit;
-    private Vector3 direction = Vector3.back;
+    private Vector3 direction;
 
     // Start is called before the first frame update
     void Start()
     {
         if (isPlayer)
         {
-            SetDirection();
+            SetDirection(transform.forward);
+        }
+        else
+        {
+            direction = - transform.forward;
         }
 
         playerStackController = GameObject.FindObjectOfType<PlayerStackController>();
@@ -40,9 +44,9 @@ public class CubeController : MonoBehaviour
             {
                 isStack = true;
                 playerStackController.IncreaseCubeStack(gameObject);
-                SetDirection();
+                SetDirection(transform.forward);
             }
-            if (hit.transform.name == "ObstacleCube" && !isPlayer)
+            if (hit.transform.name == "ObstacleCube" || hit.transform.name == "FinishCube" && !isPlayer)
             {
                 playerStackController.DecreaseCubeStack(gameObject);
             }
@@ -50,12 +54,16 @@ public class CubeController : MonoBehaviour
             {
                 uIMenager.GameOverUI();
             }
+            if (hit.transform.name == "FinishCube" && isPlayer)
+            {
+                uIMenager.LevelCompleteUI();
+            }
         }
     }
 
-    private void SetDirection()
+    public void SetDirection(Vector3 givenDirection)
     {
-        direction = Vector3.forward;
+        direction = givenDirection;
     } 
 
 }

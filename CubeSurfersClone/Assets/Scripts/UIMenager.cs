@@ -7,6 +7,7 @@ public class UIMenager : MonoBehaviour
 {
 
     [SerializeField] private GameObject gameOverUI;
+    [SerializeField] private GameObject levelCompleteUI;
 
     private void Start()
     {
@@ -21,6 +22,12 @@ public class UIMenager : MonoBehaviour
     public void GameOverUI()
     {
         gameOverUI.SetActive(true);
+        Time.timeScale = 0f;
+    }
+
+    public void LevelCompleteUI()
+    {
+        levelCompleteUI.SetActive(true);
         Time.timeScale = 0f;
     }
 

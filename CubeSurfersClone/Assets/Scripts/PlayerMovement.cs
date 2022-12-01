@@ -13,7 +13,7 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 firstPos, endPos;
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (!isPlayerRotated)
         {

@@ -16,9 +16,11 @@ public class PlayerStackController : MonoBehaviour
     public void IncreaseCubeStack(GameObject _gameObject)
     {
         transform.position = new Vector3(transform.position.x, transform.position.y + 1f, transform.position.z);
+
         _gameObject.transform.position = new Vector3(lastCube.transform.position.x, lastCube.transform.position.y - 1f, lastCube.transform.position.z);
         _gameObject.transform.SetParent(transform);
         _gameObject.tag = "Player";
+
         cubeList.Add(_gameObject);
         UpdateLastCube();
     }
@@ -28,6 +30,14 @@ public class PlayerStackController : MonoBehaviour
         _gameObject.transform.parent = null;
         cubeList.Remove(_gameObject);
         UpdateLastCube();
+    }
+
+    public void SetDirectionForEachCube(Vector3 givenDirection)
+    {
+        foreach(GameObject cube in cubeList)
+        {
+            cube.GetComponent<CubeController>().SetDirection(givenDirection);
+        }
     }
 
     public void UpdateLastCube()
