@@ -3,6 +3,10 @@ using DG.Tweening;
 
 public class PlayerMovement : MonoBehaviour
 {
+    /// <summary>
+    /// This code will be edited so it can be more readble.
+    /// </summary>
+    
     public Transform Player;
     public float MovementSpeed;
     public float HorizontalSpeed;

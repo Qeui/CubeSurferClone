@@ -8,6 +8,7 @@ public class CubeController : MonoBehaviour
     [SerializeField] private PlayerStackController playerStackController;
     [SerializeField] private UIMenager uIMenager;
     [SerializeField]private bool isPlayer = false;
+
     private bool isStack = false;
     private Collider cubeCollider;
     private RaycastHit hit;

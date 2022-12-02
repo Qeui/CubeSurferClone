@@ -3,7 +3,10 @@ using UnityEngine;
 
 public class PlayerStackController : MonoBehaviour
 {
-
+    /// <summary>
+    /// This code will be edited so it can be more readble.
+    /// </summary>
+    
     public List<GameObject> cubeList = new List<GameObject>();
     private GameObject lastCube;
 

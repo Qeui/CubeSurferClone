@@ -5,6 +5,11 @@ using DG.Tweening;
 
 public class PlayerRotate : MonoBehaviour
 {
+    
+    /// <summary>
+    /// This code will be edited so it can be more readble.
+    /// </summary>
+    
     public Transform Player;
     public Transform CamHolder;
     public PlayerFollow Follow;

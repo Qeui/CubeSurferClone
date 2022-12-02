@@ -5,7 +5,7 @@ using DG.Tweening;
 
 public class PlayerFollow : MonoBehaviour
 {
-    public Transform Player;
+    [SerializeField] private Transform Player;
     public Vector3 OffsetZ;
     public Vector3 OffsetX;
     private Vector3 followPos;
