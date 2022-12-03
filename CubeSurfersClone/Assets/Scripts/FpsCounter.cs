@@ -3,6 +3,10 @@ using TMPro;
 
 public class FpsCounter : MonoBehaviour
 {
+    /// <summary>
+    /// Basic fps counter.
+    /// </summary>
+
     [SerializeField] private TextMeshProUGUI _fpsText;
     [SerializeField] private float _hudRefreshRate = 1f;
 

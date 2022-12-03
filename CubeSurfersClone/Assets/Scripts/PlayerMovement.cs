@@ -4,19 +4,21 @@ using DG.Tweening;
 public class PlayerMovement : MonoBehaviour
 {
     /// <summary>
-    /// This code will be edited so it can be more readble.
+    /// Move the player acording to the mouse position.
     /// </summary>
     
-    public Transform Player;
-    public float MovementSpeed;
-    public float HorizontalSpeed;
+    [SerializeField] private Transform Player;
+    [SerializeField] private float MovementSpeed;
+    [SerializeField] private float HorizontalSpeed;
+
     public float HorizontalMaxPos = 3;
     public float HorizontalMinPos = -3;
     public float HorizontalOffsetVal = 0; 
+
     public bool isPlayerRotated = false;
+
     private Vector3 firstPos, endPos;
 
-    // Update is called once per frame
     void FixedUpdate()
     {
         if (!isPlayerRotated)

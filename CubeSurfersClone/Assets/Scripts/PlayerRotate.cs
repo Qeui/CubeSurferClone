@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
@@ -7,43 +5,48 @@ public class PlayerRotate : MonoBehaviour
 {
     
     /// <summary>
-    /// This code will be edited so it can be more readble.
+    /// Rotate the player and camera when triggered.
     /// </summary>
     
     public Transform Player;
     public Transform CamHolder;
     public PlayerFollow Follow;
     public PlayerMovement Movement;
-
-    public bool rightTurn = false;
-    public bool leftTurn = false;
-
-    public float HorizontalMaxPos;
-    public float HorizontalMinPos;
-    public float HorizontalOffsetVal;
-    public float CamPosOffsetVal;
-
+    
     public int RotateDeg;
-    private Vector3 rotate;
+
+    private bool rightTurn = false;
+    private bool leftTurn = false;
     private bool isTriggered = false;
+
+    private float HorizontalMaxPos;
+    private float HorizontalMinPos;
+    private float HorizontalOffsetVal;
+    private float CamPosOffsetVal;
+
+    private Vector3 rotate;
 
     private void OnTriggerEnter(Collider other)
     {
         rotate = new Vector3(other.transform.rotation.x, RotateDeg, other.transform.rotation.z); 
+
         if(other.tag == "Player" && !isTriggered)
         {
+
             Player.GetComponent<Rigidbody>().velocity = Vector3.zero;
+            PlayerStackController stackController = Player.GetComponent<PlayerStackController>();
+
             if (rightTurn && !leftTurn)
             {
-                Player.GetComponent<PlayerStackController>().SetDirectionForEachCube(transform.right);
+                stackController.SetDirectionForEachCube(transform.right);
             }
             else if (leftTurn && !rightTurn)
             {
-                Player.GetComponent<PlayerStackController>().SetDirectionForEachCube(-transform.right);
+                stackController.SetDirectionForEachCube(-transform.right);
             }
             else
             {
-                Player.GetComponent<PlayerStackController>().SetDirectionForEachCube(transform.forward);
+                stackController.SetDirectionForEachCube(transform.forward);
             }
             
             Movement.HorizontalMaxPos = HorizontalMaxPos;
@@ -58,6 +61,7 @@ public class PlayerRotate : MonoBehaviour
             Follow.playerIsRotated = true;
             Movement.isPlayerRotated = true;
             isTriggered = true;
+
         }
     }
 

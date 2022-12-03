@@ -1,17 +1,20 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
 public class PlayerFollow : MonoBehaviour
 {
+    /// <summary>
+    /// Player follow for the main camera.
+    /// </summary>
+
     [SerializeField] private Transform Player;
+
     public Vector3 OffsetZ;
     public Vector3 OffsetX;
     private Vector3 followPos;
+
     public bool playerIsRotated = false;
 
-    // Update is called once per frame
     void FixedUpdate()
     {
         if (!playerIsRotated)

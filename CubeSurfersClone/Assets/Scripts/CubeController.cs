@@ -1,20 +1,21 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CubeController : MonoBehaviour
 {
+    /// <summary>
+    /// Controls the cube collision
+    /// </summary>
 
     [SerializeField] private PlayerStackController playerStackController;
     [SerializeField] private UIMenager uIMenager;
-    [SerializeField]private bool isPlayer = false;
+    [SerializeField] private bool isPlayer = false;
 
     private bool isStack = false;
     private Collider cubeCollider;
+
     private RaycastHit hit;
     private Vector3 direction;
 
-    // Start is called before the first frame update
     void Start()
     {
         if (isPlayer)
@@ -31,12 +32,12 @@ public class CubeController : MonoBehaviour
         cubeCollider = transform.GetComponent<Collider>();
     }
 
-    // Update is called once per frame
     void FixedUpdate()
     {
        SetCuberayCast();
     }
 
+    // Conrol the box cast for the cube.
     private void SetCuberayCast()
     {
         if (Physics.BoxCast(cubeCollider.bounds.center, transform.lossyScale / 2, direction, out hit, transform.rotation, 0.3f))
@@ -62,6 +63,7 @@ public class CubeController : MonoBehaviour
         }
     }
 
+    // Set direction to the given direction.
     public void SetDirection(Vector3 givenDirection)
     {
         direction = givenDirection;
